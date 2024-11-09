@@ -32,7 +32,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Doc, Id } from "../../../../convex/_generated/dataModel"
-import { EditIcon, FileIcon, Loader2, MoreVertical, StarHalf, StarIcon, TrashIcon, UndoIcon } from "lucide-react"
+import { EditIcon, FileIcon, Loader2, MoreVertical, Share2Icon, StarHalf, StarIcon, TrashIcon, UndoIcon } from "lucide-react"
 import { useState } from "react"
 import { useMutation, useQuery } from "convex/react"
 import { api } from "../../../../convex/_generated/api"
@@ -50,6 +50,15 @@ import { Input } from "@/components/ui/input"
 const formSchema = z.object({
     title: z.string().min(2).max(69)
 })
+
+const copyTextToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      console.log('Текст успешно скопирован в буфер обмена!');
+    } catch (err) {
+      console.error('Ошибка:', err);
+    }
+  };
 
 export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isFavorited:boolean }){
     const [isConfirmOpen, setIsConfirmOpen] = useState(false)
@@ -197,7 +206,17 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
                     <DropdownMenuItem className="flex gap-1 items-center cursor-pointer" onClick={() => {
                         window.open(getFileUrl(file.fileId), "_blank")
                     }}>
-                        <FileIcon className="w-4 h-4"/> Скачать
+                        <FileIcon className="w-4 h-4"/> Открыть
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem className="flex gap-1 items-center cursor-pointer" onClick={() => {
+                        copyTextToClipboard(getFileUrl(file.fileId))
+                        toast({
+                            variant: "default",
+                            title: "Ссылка скопирована",
+                          })
+                    }}>
+                        <Share2Icon className="w-4 h-4"/> Поделиться
                     </DropdownMenuItem>
 
                     <DropdownMenuItem className="flex gap-1 items-center cursor-pointer" onClick={() => {
