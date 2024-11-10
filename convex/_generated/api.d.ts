@@ -18,6 +18,7 @@ import type {
 import type * as clerk from "../clerk.js";
 import type * as crons from "../crons.js";
 import type * as files from "../files.js";
+import type * as genId from "../genId.js";
 import type * as http from "../http.js";
 import type * as users from "../users.js";
 
@@ -33,6 +34,7 @@ declare const fullApi: ApiFromModules<{
   clerk: typeof clerk;
   crons: typeof crons;
   files: typeof files;
+  genId: typeof genId;
   http: typeof http;
   users: typeof users;
 }>;

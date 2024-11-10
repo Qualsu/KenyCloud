@@ -52,13 +52,8 @@ const formSchema = z.object({
 })
 
 const copyTextToClipboard = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      console.log('Текст успешно скопирован в буфер обмена!');
-    } catch (err) {
-      console.error('Ошибка:', err);
-    }
-  };
+    await navigator.clipboard.writeText(text)
+}
 
 export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isFavorited:boolean }){
     const [isConfirmOpen, setIsConfirmOpen] = useState(false)
@@ -204,13 +199,13 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
                 <DropdownMenuContent>
                     
                     <DropdownMenuItem className="flex gap-1 items-center cursor-pointer" onClick={() => {
-                        window.open(getFileUrl(file.fileId), "_blank")
+                        window.open(getFileImageUrl(file.fileId), "_blank")
                     }}>
                         <FileIcon className="w-4 h-4"/> Открыть
                     </DropdownMenuItem>
 
                     <DropdownMenuItem className="flex gap-1 items-center cursor-pointer" onClick={() => {
-                        copyTextToClipboard(getFileUrl(file.fileId))
+                        copyTextToClipboard(getFileForCopyLink(file.linkId))
                         toast({
                             variant: "default",
                             title: "Ссылка скопирована",
@@ -306,6 +301,10 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
     )
 }
 
-export function getFileUrl(fileId: Id<"_storage">): string{
+export function getFileImageUrl(fileId: Id<"_storage">): string{
     return `${process.env.NEXT_PUBLIC_CONVEX_ACTION_URL}/getImage?storageId=${fileId}`
+}
+
+export function getFileForCopyLink(linkId: string | undefined): string{
+    return `https://keny.cloud/file/${linkId}`
 }

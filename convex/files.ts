@@ -1,9 +1,9 @@
 import { ConvexError, v } from "convex/values"
 import { internalMutation, mutation, MutationCtx, query, QueryCtx } from "./_generated/server"
-import { getUser } from "./users"
 import { fileTypes } from "./schema";
 import { Doc, Id } from "./_generated/dataModel";
 import { access } from "fs";
+import { generateRandomId } from "./genId";
 
 export const generateUploadUrl = mutation(async (ctx) => {
     const identify = await ctx.auth.getUserIdentity()
@@ -49,12 +49,16 @@ export const createFile = mutation({
             throw new ConvexError("you do not have access to this org")
         }
 
+        const id = generateRandomId()
+        console.log(id)
+
         await ctx.db.insert("files", {
             name: args.name,
             orgId: args.orgId,
             fileId: args.fileId,
             type: args.type,
-            userId: hasAccess.user._id
+            userId: hasAccess.user._id,
+            linkId: id
         })
     }
 })
@@ -133,6 +137,17 @@ export const getFiles = query({
         }
 
         return files
+    }
+})
+
+export const getLink = mutation({
+    args: { linkId: v.optional(v.string()) },
+    async handler(ctx, args){
+        const fileid = await ctx.db.query("files")
+        .filter((q) => q.eq(q.field("linkId"), args.linkId))
+        .collect()
+
+        return `https://combative-moose-852.convex.site/getImage?storageId=${fileid[0].fileId}`
     }
 })
 
