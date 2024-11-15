@@ -69,7 +69,7 @@ export function UploadButton() {
     })
     const { storageId } = await result.json()
 
-    console.log(fileType)
+    console.debug(fileType)
     const types = {
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "txt",
       "application/rtf": "txt",

@@ -19,8 +19,6 @@ async function hasAccessToOrg(ctx: QueryCtx | MutationCtx, orgId: string) {
 
     const identify = await ctx.auth.getUserIdentity()
         
-    // console.log(identify)
-
     if(!identify) return null
 
     const user = await ctx.db.query("users").withIndex("by_tokenIdentifier", 
@@ -50,7 +48,6 @@ export const createFile = mutation({
         }
 
         const id = generateRandomId()
-        console.log(id)
 
         await ctx.db.insert("files", {
             name: args.name,
