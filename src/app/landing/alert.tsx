@@ -8,7 +8,7 @@ export function Alert() {
         setVisible(false);
     };
 
-    const alert: boolean = true;
+    const alert: boolean = false;
 
     if (!alert) return null;
 
