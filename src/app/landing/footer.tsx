@@ -14,7 +14,7 @@ export function Footer(){
                             <a href="https://feedback.qual.su" target="_blank" className="hover:underline me-4 md:me-6">Feedback</a>
                         </li>
                         <li>
-                            <a href="https://qual.su" target="_blank" className="hover:underline me-4 md:me-6">Qualsu</a>
+                            <a href="https://id.qual.su" target="_blank" className="hover:underline me-4 md:me-6">Qual ID</a>
                         </li>
                         <li>
                             <a href="https://t.me/qualsu" target="_blank" className="hover:underline me-4 md:me-6">Telegram</a>
@@ -25,7 +25,7 @@ export function Footer(){
                     </ul>
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-                <span className="block text-sm text-gray-500 sm:text-center ">© 2021-2024 <a href="https://copyright.qual.su" className="hover:underline">Qualsu</a></span>
+                <span className="block text-sm text-gray-500 sm:text-center ">© 2021-2024 <a href="https://qual.su" className="hover:underline">Qualsu</a></span>
             </div>
         </footer>
     )

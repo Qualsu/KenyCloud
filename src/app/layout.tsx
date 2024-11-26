@@ -25,7 +25,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <ConvexClientProvider>
           <Toaster />
-          <Header/>
           {children}
         </ConvexClientProvider>
       </body>

@@ -26,7 +26,9 @@ export default function Main(){
                 ) : (
                     <SignedOut>
                         <SignInButton>
-                            <Button className="mt-2">Войти</Button>
+                            <a href="/auth/sign-in">
+                                <Button className="mt-2">Войти</Button>
+                            </a>
                         </SignInButton>
                     </SignedOut>
                 )}

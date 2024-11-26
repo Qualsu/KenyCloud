@@ -4,6 +4,8 @@ import { useUser } from '@clerk/clerk-react'
 import Page403 from "../errors/403";
 import { SideNav } from "./side-nav"
 import { useEffect, useState } from 'react';
+import { redirect } from 'next/navigation';
+import { Header } from '../landing/header';
 
 export default function DashboardLayout({
   children,
@@ -12,33 +14,36 @@ export default function DashboardLayout({
 }>) {
 
   const { isSignedIn } = useUser()
-  const [showPage403, setShowPage403] = useState(false)
+  const [showPage, setshowPage] = useState(false)
 
   useEffect(() => {
     if (process.env.SERVER_STATE === "True" || !isSignedIn) {
       const timer = setTimeout(() => {
-        setShowPage403(true)
+        setshowPage(true)
       }, 1000)
 
       return () => clearTimeout(timer)
     } else {
-      setShowPage403(false)
+      setshowPage(false)
     }
   }, [isSignedIn])
 
   return (
       <>
-        {showPage403 ? (
-          <Page403/>
+        {showPage ? (
+          redirect("/auth/sign-in")
         ) : (
-          <main className="container mx-auto pt-12">
-            <div className="flex gap-8">
-              <SideNav />
-              <div className="w-full">
-                {children}
+          <div>
+            <Header/>
+            <main className="container mx-auto pt-12">
+              <div className="flex gap-8">
+                <SideNav />
+                <div className="w-full">
+                  {children}
+                </div>
               </div>
-            </div>
-          </main>
+            </main>
+          </div>
         )}
       </>
   );
