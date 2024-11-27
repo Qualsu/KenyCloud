@@ -1,7 +1,6 @@
 "use client"
 
 import { useUser } from '@clerk/clerk-react'
-import Page403 from "../errors/403";
 import { SideNav } from "./side-nav"
 import { useEffect, useState } from 'react';
 import { redirect } from 'next/navigation';

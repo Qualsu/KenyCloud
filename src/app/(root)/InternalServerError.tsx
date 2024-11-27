@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import Page500 from './errors/500';
+import Page500 from '../errors/500';
 
 interface ErrorPageProps {
   error: Error;

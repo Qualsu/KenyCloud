@@ -1,7 +1,7 @@
-import { Alert } from "./landing/alert"
-import { Footer } from "./landing/footer"
-import { Header } from "./landing/header"
-import Main from "./landing/main"
+import { Alert } from "../landing/alert"
+import { Footer } from "../landing/footer"
+import { Header } from "../landing/header"
+import Main from "../landing/main"
 
 export default async function Landing(){
     return (
