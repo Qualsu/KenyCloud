@@ -32,7 +32,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Doc, Id } from "../../../../convex/_generated/dataModel"
-import { EditIcon, FileIcon, Loader2, MoreVertical, Share2Icon, StarHalf, StarIcon, TrashIcon, UndoIcon } from "lucide-react"
+import { EditIcon, FileIcon, Loader2, MoreVertical, Share2Icon, Star, StarHalf, StarIcon, TrashIcon, UndoIcon } from "lucide-react"
 import { useState } from "react"
 import { useMutation, useQuery } from "convex/react"
 import { api } from "../../../../convex/_generated/api"
@@ -118,7 +118,7 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
             <AlertDialog open={isConfirmOpen} onOpenChange={setIsConfirmOpen}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>Вы абсолютно уверены?</AlertDialogTitle>
+                        <AlertDialogTitle>Вы уверены?</AlertDialogTitle>
                         <AlertDialogDescription>
                             Это действие переместит ваш файл в корзину, а при повторном действии, удалит его навсегда без возможности восстановления
                         </AlertDialogDescription>
@@ -129,7 +129,7 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
                             await deleteFile({fileId: file._id})
                             toast({
                                 variant: "default",
-                                title: "Файл удален",
+                                title: "Файл перемещен в корзину",
                                 description: "Ваш файл был перемещен в корзину, перейдите чтобы его восстановить"
                             })
                         }}>Удалить</AlertDialogAction>
@@ -225,7 +225,7 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
                             </div>
                         ):(
                             <div className="flex gap-1 items-center">
-                                <Image src={unstarImg} className="w-4 h-4" alt="избранные"/> Добавить в Избранные
+                                <Star className="w-4 h-4"/> Добавить в Избранные
                             </div>
                         )}
                     </DropdownMenuItem>

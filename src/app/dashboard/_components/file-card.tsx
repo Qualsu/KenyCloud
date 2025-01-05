@@ -92,7 +92,7 @@ export function FileCard({file}: {file: Doc<"files"> & {isFavorited: boolean}}){
             }
         </CardContent>
         <CardFooter className="flex justify-between">
-            <div className="flex gap-2 text-gray-500 items-center">
+            <div className="flex gap-2 text-gray-500 dark:text-gray-300 items-center">
                 <Avatar className="w-8 h-8">
                     <AvatarImage src={userProfile?.image} />
                     <AvatarFallback>CN</AvatarFallback>
@@ -100,7 +100,7 @@ export function FileCard({file}: {file: Doc<"files"> & {isFavorited: boolean}}){
                 {userProfile?.name}
             </div>
 
-            <div className="text-xs text-gray-700 mx-3">
+            <div className="text-xs text-gray-700 dark:text-gray-300 mx-3">
                 Загружено {formatRelative(new Date(file._creationTime), new Date())}
             </div>
         </CardFooter>

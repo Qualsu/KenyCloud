@@ -106,6 +106,9 @@ export default function File({ params: { id } }: Props) {
         )
     }
 
+    if (!url) return
+    router.push(url)
+
     return (
         <div className="flex flex-col justify-center items-center text-center h-screen">
             {!scanResult && !error && (

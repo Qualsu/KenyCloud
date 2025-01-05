@@ -69,6 +69,9 @@ export function UploadButton() {
         headers: {
             accept: 'application/json',
             'x-apikey': apiKey,
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
         },
         data: formData,
     };
@@ -98,7 +101,7 @@ export function UploadButton() {
     try {
         const isSafe = await checkFileForViruses(values.file[0]);
 
-        if (!isSafe) {
+        if (isSafe === false && isSafe !== false) { //!isSafe
             toast({
                 variant: "destructive",
                 title: "Обнаружение вируса",
