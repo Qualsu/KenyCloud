@@ -53,8 +53,11 @@ export default function File({ params: { id } }: Props) {
                 accept: 'application/json',
                 'x-apikey': apiKey,
                 'content-type': 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
             },
-            data: new URLSearchParams({ url }).toString()
+            data: new URLSearchParams({ url }).toString(),
         } 
 
         try {
@@ -69,6 +72,7 @@ export default function File({ params: { id } }: Props) {
                     accept: 'application/json',
                     'x-apikey': apiKey,
                 },
+                
             }) 
 
             const stats = analysisResponse.data.data.attributes.stats 
