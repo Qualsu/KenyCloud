@@ -4,7 +4,7 @@ import { useUser } from '@clerk/clerk-react'
 import { SideNav } from "./side-nav"
 import { useEffect, useState } from 'react';
 import { redirect } from 'next/navigation';
-import { Header } from '../landing/header';
+import { Header } from '../(landing)/_component/header';
 
 export default function DashboardLayout({
   children,

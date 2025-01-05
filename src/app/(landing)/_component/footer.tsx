@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logoImg from "../../../public/image/KenyCloudFull.png"
+import logoImg from "../../../../public/image/KenyCloudFull.png"
 
 export function Footer(){
     return (

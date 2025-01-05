@@ -1,7 +1,7 @@
-import { Alert } from "../landing/alert"
-import { Footer } from "../landing/footer"
-import { Header } from "../landing/header"
-import Main from "../landing/main"
+import { Alert } from "./_component/alert"
+import { Footer } from "./_component/footer"
+import { Header } from "./_component/header"
+import Main from "./_component/main"
 
 export default async function Landing(){
     return (

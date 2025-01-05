@@ -46,6 +46,7 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input"
+import { useOrigin } from "../../../../hooks/use-origin"
 
 const formSchema = z.object({
     title: z.string().min(2).max(69)
@@ -67,6 +68,7 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
     const me = useQuery(api.users.getMe)
     const organization = useOrganization()
     const user = useUser()
+    const origin = useOrigin()
     const { toast } = useToast()
     
     
@@ -205,7 +207,7 @@ export function FileCardActions({ file, isFavorited }: { file: Doc<"files">, isF
                     </DropdownMenuItem>
 
                     <DropdownMenuItem className="flex gap-1 items-center cursor-pointer" onClick={() => {
-                        copyTextToClipboard(getFileForCopyLink(file.linkId))
+                        copyTextToClipboard(getFileForCopyLink(file.linkId, origin))
                         toast({
                             variant: "default",
                             title: "Ссылка скопирована",
@@ -305,6 +307,6 @@ export function getFileImageUrl(fileId: Id<"_storage">): string{
     return `${process.env.NEXT_PUBLIC_CONVEX_ACTION_URL}/getImage?storageId=${fileId}`
 }
 
-export function getFileForCopyLink(linkId: string | undefined): string{
-    return `https://keny.cloud/file/${linkId}`
+export function getFileForCopyLink(linkId: string | undefined, link: string): string{
+    return `${link}/file/${linkId}`
 }

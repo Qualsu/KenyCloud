@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import img from "../../../public/image/Landing.png"
+import img from "../../../../public/image/Landing.png"
 import { Button } from "@/components/ui/button";
 import { SignedOut, SignInButton, useUser } from "@clerk/nextjs";
 
