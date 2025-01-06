@@ -17,8 +17,8 @@ export default function Main(){
             <Image src={img} width="700" alt="" className="m-2 md:mr-2 animate-fade-right animate-duration-1000 animate-delay-[100ms] animate-ease-in-out"/>
             <div className="text-center md:text-left mt-6 mx-2 animate-fade-left animate-duration-1000 animate-delay-[100ms] animate-ease-in-out">
                 <div className="text-5xl lg:text-6xl text-white my-5 md:my-2">
-                    <h1 className="text-main-whitedark dark:text-main font-bold filter flex items-center">
-                        <span className="text-main-grey dark:text-zinc-500">Keny</span>Cloud
+                    <h1 className="text-main-whitedark dark:text-main font-bold filter flex items-center justify-center md:justify-normal">
+                        <span className="text-main-grey dark:text-white-grey">Keny</span>Cloud
                     </h1>
                 </div>
                 <h3 className="text-2xl break-word max-w-[500px] text-gray-600 dark:text-gray-50 px-4 md:px-0">Open source Файловое хранилище</h3>

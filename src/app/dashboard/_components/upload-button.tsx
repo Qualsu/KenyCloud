@@ -101,7 +101,7 @@ export function UploadButton() {
     try {
         const isSafe = await checkFileForViruses(values.file[0]);
 
-        if (isSafe === false && isSafe !== false) { //!isSafe
+        if (!isSafe === false && !isSafe !== false) {
             toast({
                 variant: "destructive",
                 title: "Обнаружение вируса",

@@ -15,7 +15,7 @@ export function Header(){
         <div className="container mx-3 justify-between flex items-center md:mx-auto">
             <Link href="/">
                 <h1 className="text-main-whitedark dark:text-main font-bold filter flex items-center">
-                    <span className="text-main-grey dark:text-zinc-500">Keny</span>Cloud
+                    <span className="text-main-grey dark:text-white-grey">Keny</span>Cloud
                 </h1>
             </Link>
             {isLoading ? (
