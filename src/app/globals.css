@@ -93,6 +93,10 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+.cl-internal-13u79ez {
+  background: none;
+}
+
 @layer base {
   * {
     @apply border-border;

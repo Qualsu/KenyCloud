@@ -80,7 +80,6 @@ export function UploadButton() {
         const response = await axios.request(options);
         const analysisId = response.data.data.id;
 
-        // Проверяем результаты анализа
         const analysisResponse = await axios.get(`https://www.virustotal.com/api/v3/analyses/${analysisId}`, {
             headers: {
                 accept: 'application/json',
@@ -101,14 +100,14 @@ export function UploadButton() {
     try {
         const isSafe = await checkFileForViruses(values.file[0]);
 
-        if (!isSafe === false && !isSafe !== false) {
-            toast({
-                variant: "destructive",
-                title: "Обнаружение вируса",
-                description: "Ваш файл не может быть загружен, так как содержит вирусы"
-            });
-            return;
-        }
+        // if (!isSafe) {
+        //     toast({
+        //         variant: "destructive",
+        //         title: "Обнаружение вируса",
+        //         description: "Ваш файл не может быть загружен, так как содержит вирусы"
+        //     });
+        //     return;
+        // }
 
         const postUrl = await generateUploadUrl();
         const fileType = values.file[0].type;
