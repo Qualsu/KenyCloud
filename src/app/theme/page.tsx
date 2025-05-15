@@ -3,7 +3,6 @@ import { ModeToggle } from "@/components/ui/mode-toggle";
 import { Separator } from "@/components/ui/separator";
 import { Check, Cloud, Loader2 } from "lucide-react";
 
-
 export default function Theme(){
     return (
         <div className="flex flex-col justify-center items-center h-screen gap-4">

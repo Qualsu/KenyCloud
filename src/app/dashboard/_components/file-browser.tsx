@@ -111,9 +111,6 @@ export function FilesBrowser({title, favoritesOnly, deletedOnly}: {title: string
     "image", "imageother", "table", "txt", "presentation", "pptx", 
     "video", "audio", "programming", "exe", "db"
   ];
-  const modifiedFilesDate = modifiedFiles.sort((a, b) => {
-    return sortOrder.indexOf(a.type) - sortOrder.indexOf(b.type);
-  });
 
   const getSortedFiles = () => {
     if (sort === "alphabet") {

@@ -31,7 +31,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast"
-import { Loader2 } from "lucide-react";
+import { Loader2, TriangleAlert, X } from "lucide-react";
 import { Doc } from "../../../../convex/_generated/dataModel";
 
 const formSchema = z.object({
@@ -93,6 +93,7 @@ export function UploadButton() {
       "application/vnd.sqlite3": "db",
       "application/vnd.openxmlformats-officedocument.presentationml.presentation": "presentation",
       "application/pdf": "presentation",
+      "application/x-zip-compressed": "archive",
     } as Record<string, Doc<"files">["type"]>
     
     try{
@@ -176,10 +177,10 @@ export function UploadButton() {
                               </FormItem>
                             )}
                           />
-                          <Button type="submit" disabled={form.formState.isSubmitting} className="flex gap-2">
-                            {form.formState.isSubmitting && (<Loader2 className="mr-2 h-4 w-4 animate-spin"/>)}
-                            Загрузить
-                          </Button>
+                          <div>
+                            <p className="flex items-center flex-row"><TriangleAlert className="w-5 h-5 mr-1"/> На данный момент загрузка отключена</p>
+                            <i className="text-[12px] opacity-50">от 15.05.25</i>
+                          </div>
                         </form>
                       </Form>
                   </DialogDescription>

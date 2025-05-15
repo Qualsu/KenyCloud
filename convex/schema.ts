@@ -13,6 +13,7 @@ export const fileTypes = v.union(
   v.literal("programming"),
   v.literal("exe"),
   v.literal("db"),
+  v.literal("archive"),
 )
 
 export const roles = v.union(v.literal("admin"), v.literal("member"))

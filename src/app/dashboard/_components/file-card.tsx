@@ -90,6 +90,9 @@ export function FileCard({file}: {file: Doc<"files"> & {isFavorited: boolean}}){
             {
                 file.type === "programming" && <Code2Icon className="w-20 h-20"/>
             }
+            {
+                file.type === "archive" && <ArchiveIcon className="w-20 h-20"/>
+            }
         </CardContent>
         <CardFooter className="flex justify-between">
             <div className="flex gap-2 text-gray-500 dark:text-gray-300 items-center">
